@@ -10,11 +10,14 @@ const upload: Multer = multer({
   fileFilter: (
     _req: Request,
     file: Express.Multer.File,
-    callback: multer.FileFilterCallback | any
+    callback: multer.FileFilterCallback | any,
   ) => {
     const allowedMimes = ['image/jpeg', 'image/png', 'image/gif'];
     if (!allowedMimes.includes(file.mimetype)) {
-      const error = new MulterError('LIMIT_UNEXPECTED_FILE', 'Invalid file type. Only JPEG, PNG, and GIF files are allowed.');
+      const error = new MulterError(
+        'LIMIT_UNEXPECTED_FILE',
+        'Invalid file type. Only JPEG, PNG, and GIF files are allowed.',
+      );
       callback(error, false);
     } else {
       callback(null, true);
@@ -36,6 +39,5 @@ const uploader = (fields: { [key: string]: string }) => {
 };
 
 export default uploader;
-
 
 // export default upload;

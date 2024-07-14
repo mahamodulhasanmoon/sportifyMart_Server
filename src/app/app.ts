@@ -9,7 +9,10 @@ import { notFoundHandler } from '../errors/notFoundError';
 const app: Application = express();
 const doc = YAML.load(`${process.cwd()}/src/docs/swagger.yaml`);
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(doc));
-app.use('/api/v1/public', express.static(path.resolve(process.cwd(),  'uploads')));
+app.use(
+  '/api/v1/public',
+  express.static(path.resolve(process.cwd(), 'uploads')),
+);
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '..', 'views'));
@@ -20,6 +23,5 @@ app.use(middleware);
 app.use('/api/v1', routes);
 app.use(notFoundHandler);
 app.use(errorHandler);
-
 
 export default app;

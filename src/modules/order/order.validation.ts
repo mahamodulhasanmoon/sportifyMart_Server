@@ -8,5 +8,3 @@ export const orderValidationSchema = z.object({
     avatar: z.string(),
   }),
 });
-
-  

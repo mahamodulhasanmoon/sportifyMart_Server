@@ -11,7 +11,7 @@ export const productRoutes: Router = Router();
 
 productRoutes.post(
   '/',
- uploader({ thumbnail: 'single', imgUrls: 'multiple' }),
+  uploader({ thumbnail: 'single', imgUrls: 'multiple' }),
   dataFormatter,
   requestValidator(productValidationSchema),
 

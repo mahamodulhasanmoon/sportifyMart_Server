@@ -5,5 +5,3 @@ import { Router } from 'express';
 export const orderRoutes: Router = Router();
 
 orderRoutes.post('/demo');
-
-  

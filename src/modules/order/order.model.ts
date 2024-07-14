@@ -1,6 +1,6 @@
 // order.model.ts
 
-  import { Schema, model } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import { IOrder } from './order.interface';
 
 const orderSchema = new Schema<IOrder>({
@@ -17,7 +17,4 @@ const orderSchema = new Schema<IOrder>({
   },
 });
 
-
-  export const Order = model<IOrder>('Order', orderSchema);
-
-  
+export const Order = model<IOrder>('Order', orderSchema);

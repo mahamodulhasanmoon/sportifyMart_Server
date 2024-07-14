@@ -12,6 +12,5 @@ export const modulerRoutes: IModulerRoutes = [
   {
     path: '/orders',
     route: orderRoutes,
-  }
-
+  },
 ];
