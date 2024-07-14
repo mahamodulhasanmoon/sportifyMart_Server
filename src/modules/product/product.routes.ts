@@ -11,7 +11,7 @@ export const productRoutes: Router = Router();
 
 productRoutes.post(
   '/',
- uploader({ profilePic: 'single', freatureImgs: 'multiple' }),
+ uploader({ thumbnail: 'single', imgUrls: 'multiple' }),
   dataFormatter,
   requestValidator(productValidationSchema),
 

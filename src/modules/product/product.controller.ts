@@ -6,10 +6,13 @@ import { handleMulterUpload } from '../../utils/handleUploader';
 
 
   export const createProductController: RequestHandler = catchAsync(async (req, res) => {
-    // await uploadImageToCloudinary(req.file)
+
+
+   const imageInfo:any = await handleMulterUpload(req.files)
+
+const initialData = {...imageInfo,...req.body}
+       // await uploadImageToCloudinary(req.file)
     // const result = await createProductService(req.body);
-   const result = await handleMulterUpload(req.files)
-   console.log(result);
    
     
     // console.log(files);
@@ -18,7 +21,7 @@ import { handleMulterUpload } from '../../utils/handleUploader';
       status: 201,
       success: true,
       message: 'Successfully created product',
-      data: null,
+      data: initialData,
     });
   });
   

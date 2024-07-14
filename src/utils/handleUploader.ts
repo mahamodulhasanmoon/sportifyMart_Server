@@ -1,5 +1,6 @@
 import { uploadImageToCloudinary } from "./cloudUploader";
 
+
 type UploadedFiles = { [key: string]: string | string[] }
 export const handleMulterUpload =  async(files:any):Promise<UploadedFiles>=>{
     

@@ -9,8 +9,6 @@ export const productValidationSchema = z.object({
     category: z.string().min(1, { message: "Category is required" }),
     brand: z.string().min(1, { message: "Brand is required" }),
     stock: z.number().int().nonnegative({ message: "Stock must be a non-negative integer" }),
-    thumbnail: z.string().url({ message: "Thumbnail must be a valid URL" }),
-    imgUrls: z.array(z.string().url({ message: "Each image URL must be valid" })),
     rating: z.number().min(0).max(5).optional(),
   }),
 });
