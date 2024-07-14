@@ -53,7 +53,8 @@ export const uploadImageToCloudinary = async (file: any) => {
   const { secure_url } = await cloudinary.uploader.upload(outputFilePath, {
     public_id: outputFileName,
   });
-  await deleteFile(file.path).catch(error => {
+  await deleteFile(outputFilePath)
+  .catch(error => {
     throw new CustomError(500, error.message);
   });
 

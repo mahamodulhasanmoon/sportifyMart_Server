@@ -3,14 +3,13 @@ import { RequestHandler } from 'express';
 import { sendResponse } from '../../utils/sendResponse';
 import { catchAsync } from '../../utils/catchAsync';
 import { handleMulterUpload } from '../../utils/handleUploader';
+import { createProductService } from './product.service';
 
 export const createProductController: RequestHandler = catchAsync(
   async (req, res) => {
     const imageInfo: any = await handleMulterUpload(req.files);
-
     const initialData = { ...imageInfo, ...req.body };
-    // await uploadImageToCloudinary(req.file)
-    // const result = await createProductService(req.body);
+    const result = await createProductService(initialData);
 
     // console.log(files);
 
@@ -18,7 +17,7 @@ export const createProductController: RequestHandler = catchAsync(
       status: 201,
       success: true,
       message: 'Successfully created product',
-      data: initialData,
+      data: result,
     });
   },
 );
