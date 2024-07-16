@@ -24,5 +24,8 @@ productRoutes.post(
 );
 productRoutes.get('/', getAllProductController);
 productRoutes.get('/:id', getProductByIdController);
-productRoutes.patch('/:id', updateProductByIdController);
+productRoutes.patch('/:id', 
+  uploader({ thumbnail: 'single', imgUrls: 'multiple' }),
+  dataFormatter,
+  updateProductByIdController);
 productRoutes.delete('/:id', deleteProductByIdController);
