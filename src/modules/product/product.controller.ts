@@ -7,7 +7,8 @@ import { createProductService, deleteProductByIdService, getAllProducts, getProd
 
 export const createProductController: RequestHandler = catchAsync(
   async (req, res) => {
-    const imageInfo: any = await handleMulterUpload(req.files);
+
+      const imageInfo: any = await handleMulterUpload(req.files);
     const initialData = { ...imageInfo, ...req.body };
     const result = await createProductService(initialData);
 
@@ -61,8 +62,17 @@ export const deleteProductByIdController: RequestHandler = catchAsync(
 );
 export const updateProductByIdController: RequestHandler = catchAsync(
   async (req, res) => {
+    const imageInfo: any = await handleMulterUpload(req.files);
+    const initialData = { ...imageInfo, ...req.body };
+    
+    if (!imageInfo.thumbnail) {
+      initialData.thumbnail = req.body.thumbnail;
+    }
+    if (!imageInfo.imgUrl) {
+      initialData.imgUrl = req.body.imgUrl;
+    }
 
-    const result = await updateProductByIdService(req.params.id,req.body);
+    const result = await updateProductByIdService(req.params.id,initialData);
     sendResponse(res, {
       status: 201,
       success: true,

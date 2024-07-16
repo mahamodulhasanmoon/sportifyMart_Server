@@ -7,7 +7,7 @@ export interface IProduct {
   category: string;
   brand: string;
   stock: number;
-  thumbnail: string;
-  imgUrls: string[];
+  thumbnail?: string;
+  imgUrls?: string[];
   rating?: number;
 }

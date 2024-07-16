@@ -5,7 +5,7 @@ export const handleMulterUpload = async (
   files: any,
 ): Promise<UploadedFiles> => {
   const uploadedFiles: { [key: string]: any } = {};
-
+console.log(files);
   const uploadPromises = Object.keys(files).map(async fieldname => {
     if (files[fieldname].length === 1) {
       // Single file

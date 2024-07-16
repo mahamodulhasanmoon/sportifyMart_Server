@@ -29,12 +29,14 @@ export const deleteProductByIdService = async (id:string) => {
   return result;
 };
 
-export const updateProductByIdService = async (id:string,payload:Partial<IProduct>) => {
-  const result = await Product.findByIdAndUpdate(id,{
-  payload,
-  new: true,
-  runValidators: true,
-
-  });
+export const updateProductByIdService = async (id: string, payload: Partial<IProduct>) => {
+  const result = await Product.findByIdAndUpdate(
+    id,
+    payload,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
   return result;
 };
