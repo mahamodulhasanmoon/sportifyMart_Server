@@ -11,7 +11,6 @@ export class QueryBuilder<T> {
 
   search(searchableFields: string[]) {
     // get SearchTerm Using Search
-
     const searchTerm = this?.query?.searchTerm || '';
     if (this) {
       this.modelQuery = this.modelQuery.find({
@@ -24,8 +23,11 @@ export class QueryBuilder<T> {
       });
     }
 
+
     return this;
   }
+
+
 
   filter() {
     const queryObj = { ...this.query };

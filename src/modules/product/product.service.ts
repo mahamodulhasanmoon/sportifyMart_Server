@@ -12,9 +12,10 @@ export const createProductService = async (payload: IProduct) => {
 export const getAllProducts = async (queries: any) => {
   const productQuery = new QueryBuilder(Product.find(),queries)
   .sort()
+  .filter()
   .search(searchableFields)
-  .fields()
   .paginate()
+  .fields()
   ;
   const result = productQuery.modelQuery
   return result;
