@@ -14,8 +14,8 @@ export const getAllProducts = async (queries: any) => {
   .sort()
   .filter()
   .search(searchableFields)
-  .paginate()
   .fields()
+  .paginate()
   ;
   const result = productQuery.modelQuery
   return result;

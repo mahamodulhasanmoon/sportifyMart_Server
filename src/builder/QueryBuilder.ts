@@ -36,7 +36,13 @@ export class QueryBuilder<T> {
     const excludeFields = ['searchTerm', 'sort', 'limit', 'page', 'fields'];
 
     excludeFields.forEach(el => delete queryObj[el]);
-
+    
+  // Remove fields with empty or null values
+  Object.keys(queryObj).forEach(key => {
+    if (queryObj[key] === '' || queryObj[key] == null) {
+      delete queryObj[key];
+    }
+  });
     this.modelQuery = this.modelQuery.find(queryObj as FilterQuery<T>);
 
     return this;
