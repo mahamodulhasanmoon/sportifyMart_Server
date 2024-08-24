@@ -2,6 +2,7 @@
 
 import { Router } from 'express';
 import {
+  bulkUpdateController,
   createProductController,
   deleteProductByIdController,
   getAllProductController,
@@ -23,6 +24,7 @@ productRoutes.post(
   createProductController,
 );
 productRoutes.get('/', getAllProductController);
+productRoutes.put('/', bulkUpdateController);
 productRoutes.get('/:id', getProductByIdController);
 productRoutes.patch('/:id', 
   uploader({ thumbnail: 'single', imgUrls: 'multiple' }),

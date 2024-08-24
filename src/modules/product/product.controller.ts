@@ -3,7 +3,7 @@ import { RequestHandler } from 'express';
 import { sendResponse } from '../../utils/sendResponse';
 import { catchAsync } from '../../utils/catchAsync';
 import { handleMulterUpload } from '../../utils/handleUploader';
-import { createProductService, deleteProductByIdService, getAllProducts, getProductByIdService, updateProductByIdService } from './product.service';
+import { bulkUpdateService, createProductService, deleteProductByIdService, getAllProducts, getProductByIdService, updateProductByIdService } from './product.service';
 
 export const createProductController: RequestHandler = catchAsync(
   async (req, res) => {
@@ -73,6 +73,20 @@ export const updateProductByIdController: RequestHandler = catchAsync(
     }
 
     const result = await updateProductByIdService(req.params.id,initialData);
+    sendResponse(res, {
+      status: 201,
+      success: true,
+      message: 'product Data update successfully',
+      data: result,
+    });
+  },
+);
+
+
+export const bulkUpdateController: RequestHandler = catchAsync(
+  async (req, res) => {
+
+    const result = await bulkUpdateService(req.body);
     sendResponse(res, {
       status: 201,
       success: true,
